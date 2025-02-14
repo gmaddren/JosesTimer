@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/master.swiftdeps"
+  },
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.d",
+    "object": "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swiftdeps"
+  }
+}

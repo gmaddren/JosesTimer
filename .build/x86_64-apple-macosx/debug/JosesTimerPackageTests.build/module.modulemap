@@ -1,0 +1,4 @@
+module JosesTimerPackageTests {
+    header "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/JosesTimerPackageTests-Swift.h"
+    requires objc
+}

@@ -1,0 +1,112 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "JosesTimer-x86_64-apple-macosx15.0-debug.module": ["<JosesTimer-x86_64-apple-macosx15.0-debug.module>"]
+  "JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.module": ["<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.module>"]
+  "JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test": ["<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test>"]
+  "JosesTimerTests-x86_64-apple-macosx15.0-debug.module": ["<JosesTimerTests-x86_64-apple-macosx15.0-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<JosesTimer-x86_64-apple-macosx15.0-debug.module>"]
+  "test": ["<JosesTimer-x86_64-apple-macosx15.0-debug.module>","<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test>","<JosesTimerTests-x86_64-apple-macosx15.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/gmaddren/josestimer/Sources/JosesTimer/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/gmaddren/josestimer/Tests/JosesTimerTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/gmaddren/josestimer/Sources/JosesTimer/JosesTimer.swift"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/sources"]
+    description: "Write auxiliary file /Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/sources"
+
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.derived/runner.swift"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/sources"]
+    description: "Write auxiliary file /Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/sources"
+
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: []
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.derived/runner.swift"]
+
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/JosesTimer.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/JosesTimerTests.swift.o"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.product/Objects.LinkFileList"
+
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/gmaddren/josestimer/Tests/JosesTimerTests/JosesTimerTests.swift"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/sources"]
+    description: "Write auxiliary file /Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/sources"
+
+  "/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<JosesTimer-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/JosesTimer.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimer.swiftmodule"]
+    outputs: ["<JosesTimer-x86_64-apple-macosx15.0-debug.module>"]
+
+  "<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerPackageTests.swiftmodule"]
+    outputs: ["<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.module>"]
+
+  "<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test>":
+    tool: phony
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.xctest/Contents/MacOS/JosesTimerPackageTests"]
+    outputs: ["<JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test>"]
+
+  "<JosesTimerTests-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/JosesTimerTests.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerTests.swiftmodule"]
+    outputs: ["<JosesTimerTests-x86_64-apple-macosx15.0-debug.module>"]
+
+  "C.JosesTimer-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/gmaddren/josestimer/Sources/JosesTimer/JosesTimer.swift","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/sources"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/JosesTimer.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimer.swiftmodule"]
+    description: "Compiling Swift Module 'JosesTimer' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","JosesTimer","-emit-dependencies","-emit-module","-emit-module-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimer.swiftmodule","-output-file-map","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/sources","-I","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx10.13","-enable-batch-mode","-index-store-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/JosesTimer-Swift.h","-color-diagnostics","-swift-version","6","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","josestimer"]
+
+  "C.JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.derived/runner.swift","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerTests.swiftmodule","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/sources"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'JosesTimerPackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","JosesTimerPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerPackageTests.swiftmodule","-output-file-map","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/sources","-I","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx10.13","-enable-batch-mode","-index-store-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/JosesTimerPackageTests-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","josestimer"]
+
+  "C.JosesTimerPackageTests-x86_64-apple-macosx15.0-debug.test":
+    tool: shell
+    inputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimer.build/JosesTimer.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.build/runner.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/JosesTimerTests.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.xctest/Contents/MacOS/JosesTimerPackageTests"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.xctest/Contents/MacOS/JosesTimerPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug","-o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.xctest/Contents/MacOS/JosesTimerPackageTests","-module-name","JosesTimerPackageTests","-Xlinker","-no_warn_duplicate_libraries","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerPackageTests.product/Objects.LinkFileList","-target","x86_64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimer.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerPackageTests.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerTests.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.JosesTimerTests-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/gmaddren/josestimer/Tests/JosesTimerTests/JosesTimerTests.swift","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimer.swiftmodule","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/sources"]
+    outputs: ["/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/JosesTimerTests.swift.o","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerTests.swiftmodule"]
+    description: "Compiling Swift Module 'JosesTimerTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","JosesTimerTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules/JosesTimerTests.swiftmodule","-output-file-map","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/JosesTimerTests.build/sources","-I","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx13.0","-enable-batch-mode","-index-store-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/gmaddren/josestimer/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-swift-version","6","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","josestimer"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/gmaddren/josestimer/Sources/JosesTimer/","/Users/gmaddren/josestimer/Tests/JosesTimerTests/","/Users/gmaddren/josestimer/Package.swift","/Users/gmaddren/josestimer/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
