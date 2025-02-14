@@ -16,7 +16,10 @@ let package = Package(
     targets: [
         .target(
             name: "JosesTimer",
-            dependencies: []),
+            dependencies: [],
+            resources: [
+                .copy("Resources")
+            ]),
         .testTarget(
             name: "JosesTimerTests",
             dependencies: ["JosesTimer"])
